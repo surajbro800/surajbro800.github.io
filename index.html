@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suraj Dev | SAP BTP & Full-Stack Developer</title>
+<meta name="description" content="Freelance SAP BTP developer building CAP, Node.js, SAPUI5/Fiori and OData V4 apps.">
+<style>
+:root{--bg:#0b0f17;--card:#141b29;--text:#e8edf5;--muted:#9aa7bd;--accent:#4da3ff;--line:#243049}
+body.light{--bg:#f6f8fc;--card:#fff;--text:#142033;--muted:#5a6a82;--accent:#1a6fd4;--line:#dde4f0}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:.3s}
+.wrap{max-width:900px;margin:auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+nav b{font-size:1.2rem}
+nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-size:.95rem}
+nav a:hover{color:var(--accent)}
+button{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer}
+.hero{padding:70px 0 50px}
+.hero small{color:var(--accent);font-weight:600;letter-spacing:.08em}
+.hero h1{font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.1;margin:10px 0}
+.hero p{color:var(--muted);max-width:560px}
+.btn{display:inline-block;margin:22px 10px 0 0;padding:12px 22px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
+.btn.alt{background:transparent;color:var(--text);border:1px solid var(--line)}
+section{padding:40px 0}
+h2{font-size:1.6rem;margin-bottom:20px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card h3{margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem}
+.tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-size:.78rem;padding:4px 10px;border-radius:99px;border:1px solid var(--line);color:var(--accent)}
+footer{text-align:center;color:var(--muted);padding:40px 0;font-size:.9rem}
+.fade{opacity:0;transform:translateY(20px);transition:.7s}
+.fade.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <b>Suraj Dev</b>
+  <div><a href="#skills">Skills</a><a href="#work">Work</a><a href="#contact">Contact</a>
+  <button id="t" aria-label="Toggle theme">🌓</button></div>
+</nav>
 
+<header class="hero">
+  <small>AVAILABLE FOR FREELANCE</small>
+  <h1>I build SAP BTP apps that businesses actually use.</h1>
+  <p>Full-stack developer specialising in CAP (Node.js), SAPUI5/Fiori and OData V4, deployed on SAP BTP Cloud Foundry.</p>
+  <a class="btn" href="#contact">Hire me</a><a class="btn alt" href="#work">See my work</a>
+</header>
+
+<section id="skills" class="fade">
+  <h2>What I do</h2>
+  <div class="grid">
+    <div class="card"><h3>Backend services</h3><p>CAP data models and OData V4 services in Node.js with clean business logic.</p></div>
+    <div class="card"><h3>Fiori / UI5 frontends</h3><p>Responsive SAPUI5 apps that are easy for end users to learn.</p></div>
+    <div class="card"><h3>Cloud deployment</h3><p>Building in Business Application Studio and deploying to BTP Cloud Foundry.</p></div>
+  </div>
+</section>
+
+<section id="work" class="fade">
+  <h2>Selected work</h2>
+  <div class="grid">
+    <div class="card"><h3>Leave Management System</h3>
+      <p>Employees apply for leave and managers review it, built on CAP with a Fiori frontend and deployed to BTP.</p>
+      <div class="tags"><span>CAP</span><span>Node.js</span><span>SAPUI5</span><span>OData V4</span><span>BTP</span></div></div>
+    <div class="card"><h3>Timesheet App</h3>
+      <p>Company-wide timesheet application on SAP BTP with leave sync, so approved leave flows into time entries.</p>
+      <div class="tags"><span>CAP</span><span>Node.js</span><span>Fiori</span><span>Leave sync</span></div></div>
+  </div>
+</section>
+
+<section id="contact" class="fade">
+  <h2>Let's work together</h2>
+  <p style="color:var(--muted)">Have a project in mind? Send me a message.</p>
+  <a class="btn" href="mailto:your.email@example.com">Email me</a>
+  <a class="btn alt" href="https://www.linkedin.com/in/your-linkedin/" target="_blank" rel="noopener">LinkedIn</a>
+</section>
+
+<footer>© <span id="y"></span> Suraj Dev</footer>
+</div>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+const b=document.body,k='theme';
+try{if(localStorage.getItem(k)==='light')b.classList.add('light')}catch(e){}
+document.getElementById('t').onclick=()=>{b.classList.toggle('light');
+ try{localStorage.setItem(k,b.classList.contains('light')?'light':'dark')}catch(e){}};
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.15});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
